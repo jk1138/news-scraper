@@ -1,24 +1,24 @@
 {{!-- Nav Bar --}}
 <nav class="navbar navbar-expand-lg navbar-light">
-  <a class="navbar-brand">TV News Scraper</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <a class="navbar-brand"> TV News Scraper</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/saved">Saved TV Articles</a>
-      </li>
-      <li class="nav-item">
-        <a class="btn btn-danger scrape-btn" href="/scrape">Scrape TV Articles!</a>
-      </li>
-    </ul>
-  </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/saved">Saved Articles</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-danger scrape-btn" href="/scrape">Scrape Articles!</a>
+            </li>
+        </ul>
+    </div>
 </nav>
 
 {{!-- Carousel --}}
@@ -65,36 +65,22 @@
   </a>
 </div>
 
-{{!-- Articles --} --}}
-<div class="jumbotron jumbotron-fluid">
-  <div class="container background-box">
-    <h1>Movie News</h1>
-    <p>All the news that's fit to scrape.</p>
-  </div>
-</div>
-
+{{!-- Scrape Articles --}}
 <div class="container">
-  <div id="articleBackground">
-    <a href="/scrape">
-      <h4>Push the red button to scrape for new articles.</h4>
-    </a>
+    <div id="articleBackground">
 
-    <h1>Your Saved Articles</h1>
-    <ul>
-      {{#each dbSaved}}
-      <li class="article">
-        <a href="https:/screenrant.com{{this.link}}" target="_blank">
-          <h2>{{this.title}}</h2>
-        </a>
-        <img src={{this.image}} alt="{{this.title}}">
-        <p>{{this.excerpt}}</p>
-        <a href="https:/screenrant.com{{this.link}}" target="_blank">
-          <h3>Read the whole story</h3>
-        </a>
-        <a class="btn btn-outline-danger remove" data-id="{{this._id}}">Remove from Saved</a>
-      </li>
-      {{/each}}
-    </ul>
-    <a class="nav-link" href="/index">Return to top</a>
-  </div>
+        <h1>Scraped Articles</h1>
+        <ul>
+            {{#each dbArticle}}
+                <li class="article" data-id="{{this._id}}">
+                <a href="https://screenrant.com{{this.link}}" target="_blank"><h2>{{this.title}}</h2></a>
+                <a href="https://screenrant.com{{this.link}}" target="_blank"></a><img src={{this.image}} alt="{{this.title}}"></a>
+                <p>{{this.excerpt}}</p>
+                <a href="https://screenrant.com{{this.link}}" target="_blank"><h3>Read the whole story</h3>
+                <a class="btn btn-outline-warning save" data-id="{{this._id}}">Save to My Articles</a>
+                </li>
+            {{/each}}
+        </ul>
+        <a class="nav-link" href="/scrape">Return to top</a>
+    </div>
 </div>
