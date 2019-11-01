@@ -1,31 +1,52 @@
+
 var mongoose = require("mongoose");
+var uniqueValidator = require('mongoose-unique-validator');
 
 // Save a reference to the Schema constructor
 var Schema = mongoose.Schema;
 
 // Create a new ArticleSchema object
-var articleSchema = new Schema({
+var ArticleSchema = new Schema({
   // `title` is required and of type String
   title: {
     type: String,
-    required: true
+    required: true,
+    unique: true
+  },
+  // `summary` is required and of type String
+  summary: {
+    type: String,
+    required: true,
+    unique: true
   },
   // `link` is required and of type String
   link: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
+  saved: {
+    type: Boolean,
+    default: false
+  },
+  createdAt : {
+    type: Date,
+    default: Date.now
+  },
+  updatedAt: Date,
   // `comment` is an object that stores a Comment id
   // The ref property links the ObjectId to the Comment model
   // This allows us to populate the Article with an associated Comment
-  comment: {
+  comment: [{
     type: Schema.Types.ObjectId,
     ref: "Comment"
-  }
+  }],
 });
 
+ArticleSchema.plugin(uniqueValidator);
+
 // This creates our model from the above schema, using mongoose's model method
-var article = mongoose.model("article", articleSchema);
+var Article = mongoose.model("Article", ArticleSchema);
 
 // Export the Article model
-module.exports = article;
+module.exports = Article;
