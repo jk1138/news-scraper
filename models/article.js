@@ -5,42 +5,41 @@ var uniqueValidator = require('mongoose-unique-validator');
 // Save a reference to the Schema constructor
 var Schema = mongoose.Schema;
 
-// Create a new ArticleSchema object
+// Using the Schema constructor, create a new UserSchema object
+// This is similar to a Sequelize model
 var ArticleSchema = new Schema({
-  // `title` is required and of type String
   title: {
     type: String,
     required: true,
     unique: true
   },
-  // `summary` is required and of type String
-  summary: {
-    type: String,
-    required: true,
-    unique: true
-  },
-  // `link` is required and of type String
   link: {
     type: String,
     required: true,
     unique: true
   },
+  image: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  excerpt: {
+    type: String//,
+    //required: true//,
+   // unique: true
+  },
   saved: {
     type: Boolean,
+    required: true,
     default: false
   },
-  createdAt : {
-    type: Date,
-    default: Date.now
-  },
-  updatedAt: Date,
-  // `comment` is an object that stores a Comment id
-  // The ref property links the ObjectId to the Comment model
-  // This allows us to populate the Article with an associated Comment
-  comment: [{
+  // `Comment` is an object that stores a Comment id
+  // The ref property links the ObjectId to the Note model
+  // This allows us to populate the Article with an associated Comments
+  comment: {
     type: Schema.Types.ObjectId,
     ref: "Comment"
-  }],
+  }
 });
 
 ArticleSchema.plugin(uniqueValidator);
