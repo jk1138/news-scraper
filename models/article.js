@@ -1,6 +1,4 @@
-
 var mongoose = require("mongoose");
-var uniqueValidator = require('mongoose-unique-validator');
 
 // Save a reference to the Schema constructor
 var Schema = mongoose.Schema;
@@ -33,16 +31,14 @@ var ArticleSchema = new Schema({
     required: true,
     default: false
   },
-  // `Comment` is an object that stores a Comment id
+  // `note` is an object that stores a Note id
   // The ref property links the ObjectId to the Note model
-  // This allows us to populate the Article with an associated Comments
-  comment: {
+  // This allows us to populate the Article with an associated Note
+  note: {
     type: Schema.Types.ObjectId,
-    ref: "Comment"
+    ref: "Note"
   }
 });
-
-ArticleSchema.plugin(uniqueValidator);
 
 // This creates our model from the above schema, using mongoose's model method
 var Article = mongoose.model("Article", ArticleSchema);
