@@ -1,37 +1,24 @@
 
-.carousel {
-    width: 65%;
-    margin: 1.5em auto;
-}
-
-.carousel-item{
-    height: 325px;
-    height: 100%;
-    margin: 0 auto;
-} 
-
 body {
     color: white;
-    background-color: #ffffff;
+    background-color: rgb(31, 28, 28);
+    font-family: 'Playfair Display', serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
    text-shadow: 1px 1px 1px black;
 }
 
-.logo {
-    border-radius: 5px;
-}
 
 .title {
     font-size: 2rem;
-    text-shadow: 2px 1px 4px black;
+    /* text-shadow: 2px 1px 4px black; */
 }
 
 .navbar {
-    background-color: rgb(0, 106, 192);
+    background-color: rgb(31, 28, 28)  ;
     border-style: solid;
-    border-color: black;
+    border-color: rgb(31, 28, 28);
     border-width: 0px;
     border-bottom-width: 1px;
 
@@ -46,7 +33,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .jumbotron {
-    background-image: url("../images/newspaper-background.jpg");
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
@@ -113,7 +99,6 @@ a:hover {
 
 #articleBackground {
     background-color: rgb(177, 177, 177);
-    background-image: url("../images/bg1.png");
     border-radius: 10px;
     border-style: solid;
     border-color: black;

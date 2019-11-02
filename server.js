@@ -51,23 +51,23 @@ app.get("/scrape", function (req, res) {
 
         // Add all items to the result object
         result.title = $(this)
-          .children("div")
-          .children("h3")
-          .children("a")
+          .find("div")
+          .find("h3")
+          .find("a")
           .text();
         result.link = $(this)
-          .children("a")
+          .find("a")
           .attr("href");
         result.image = $(this)
-          .children("a")
-          .children("div")
-          .children("div")
-          .children("picture")
-          .children("source")
+          .find("a")
+          .find("div")
+          .find("div")
+          .find("picture")
+          .find("source")
           .attr("data-srcset");
         result.excerpt = $(this)
-          .children("div")
-          .children("p")
+          .find("div")
+          .find("p")
           .text();
 
         db.Article.create(result)

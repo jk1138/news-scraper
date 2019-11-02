@@ -1,10 +1,4 @@
 
-// setting a carousel timer
-$('.carousel').carousel({
-  interval: 2500
-});
-
-
 // Added an article to saved
 $(document).on("click", ".save", function() {
   var thisId = $(this).attr("data-id");
